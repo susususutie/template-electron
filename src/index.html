@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-    <p><button>click +0</button></p>
-    <script src="./app.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="./index.css" />
+
+  <style>
+    * {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    section {
+      margin: 16px;
+      border: 1px solid grey;
+      padding: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>💖 Hello World!</h1>
+  <p>Welcome to your Electron application.</p>
+  <p><button class="count">click +0</button></p>
+
+  <section>
+    <p>主进程与渲染器进程通信</p>
+    <p>方式一: 渲染器进程触发主进程事件</p>
+    <p><button class="set-title">set title</button></p>
+  </section>
+
+  <section>
+    <p>方式二: 渲染器进程触发主进程事件, 返回Promise</p>
+    <p>File path: <strong id="file-path"></strong></p>
+    <button type="button" id="open-file">Open a File</button>
+  </section>
+
+  <section>
+    <p>方式三: 渲染器进程监听主进程事件, 执行回调</p>
+    <p>
+      Current value: <strong id="counter">0</strong>
+    </p>
+  </section>
+  <script src="./renderer.js"></script>
+</body>
+
 </html>
